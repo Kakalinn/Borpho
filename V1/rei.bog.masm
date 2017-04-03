@@ -1,0 +1,20 @@
+"rei.bog.mexe" = main in
+!
+{{
+#"main[f0]" = 
+[
+(MakeVal null)
+
+(MakeVal 4.0)
+(Push)
+(MakeVal 2.0)
+(Call #"%[f2]" 2)
+(Call #"writeln[f1]" 1)
+(MakeVal 1)
+(Return)
+];
+
+}}
+*
+BASIS
+;

@@ -1,0 +1,24 @@
+fun main()
+{
+	var a, b, c, d, e;
+	if (true)
+	{
+		return a;
+	}
+	elseif (true)
+	{
+		return b;
+	}
+	elseif (true)
+	{
+		return c;
+	}
+	elseif (true)
+	{
+		return d;
+	}
+	else
+	{
+		return e;
+	}
+}

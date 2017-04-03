@@ -1,0 +1,6 @@
+fun main()
+{
+	writeln(4.0%2.0);
+
+	return 1;
+}

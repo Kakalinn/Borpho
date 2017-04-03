@@ -1,0 +1,88 @@
+fun main()
+{
+	var Bergur, Bjarki, Ragna, Sigrun, Snorri;
+	Sigrun = 4;
+	Snorri = 5;
+	Bjarki = Sigrun + Snorri;
+	Bergur = Sigrun + Snorri;
+	Ragna  = Sigrun + Snorri;
+	return 1;
+}
+
+fun rec_fib(n)
+{
+	var this, is, a, test, typpi;
+	if (true)
+	{
+		this = 0;
+	}
+	elseif (1 == 1)
+	{
+		typpi = typpi;
+	}
+	elseif (1 == 1)
+	{
+		typpi = typpi;
+	}
+	elseif (1 == 1)
+	{
+		typpi = typpi;
+	}
+	else
+	{
+		is = is;
+	}
+
+	if (0 == n)
+	{
+		return 0;
+	}
+	
+	if (1 == n)
+	{
+		return 1;
+	}
+
+	return rec_fib(n - 1) + rec_fib(n - 2);
+}
+
+fun fib(n)
+{
+	var this, is , a, test;
+	if (n < 0)
+	{
+		return 111;
+	}
+
+	rec_fib(n);
+}
+
+fun lets_test0()
+{
+	return 1;
+}
+
+fun lets_test1(a)
+{
+	return 1;
+}
+
+fun lets_test2(a, b)
+{
+	return 1;
+}
+
+fun lets_test3(a, b, c)
+{
+	return 1;
+}
+
+fun lets_test4(a, b, c, d)
+{
+	return 1;
+}
+
+fun lets_test5(a, b, c, d, e)
+{
+	return 1;
+}

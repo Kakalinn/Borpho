@@ -1,0 +1,307 @@
+%{
+	import java.io.*;
+	import java.util.*;
+%}
+
+%token <sval> IF, ELSE, ELSEIF, VAR, WHILE, NAME, RETURN, FUN, OP1, OP2, OP3, OP4, OP5, LITERAL, ASSIGNMENT
+%type  <obj> binopexpr, optmp1, optmp2, optmp3, optmp4, expr, smallexpr
+%%
+
+start
+	: program
+	;
+
+program
+	: {millithula.add("FUN");} func
+	| program {millithula.add("FUN");} func
+	;
+
+func
+	: FUN NAME {millithula.add($2); args_counter = 0;} '(' optnames ')' {function_map.put($2, args_counter);} '{' decls exprs '}' {millithula.add("ENDFUN");}
+	;
+
+optnames
+	: {millithula.add("DECL");} names {millithula.add("ENDDECL");}
+	|
+	;
+
+decls
+	: decls decl ';'
+	|
+	;
+
+decl
+	: VAR {millithula.add("DECL");} names {millithula.add("ENDDECL");}
+	;
+
+names
+	: NAME 				{millithula.add($1); args_counter++;}
+	| names ',' NAME 	{millithula.add($3); args_counter++;}
+	;
+
+exprs
+	: exprs expr ';'
+	|
+	;
+
+expr
+	: RETURN expr 				{millithula.add("RETURN"); millithula.add($2);}
+	| NAME ASSIGNMENT expr 		{millithula.add("ASSIGN"); millithula.add($1); millithula.add($3);}
+	| binopexpr					{$$ = $1;}
+	;
+
+binopexpr
+	: binopexpr OP5 optmp1
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($2);
+		ret.add($1);
+		ret.add($3);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| optmp1
+	;
+
+optmp1
+	: optmp1 OP4 optmp2
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($2);
+		ret.add($1);
+		ret.add($3);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| optmp2
+	;
+
+optmp2
+	: optmp2 OP3 optmp3
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($2);
+		ret.add($1);
+		ret.add($3);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| optmp3
+	;
+
+optmp3
+	: optmp3 OP2 optmp4
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($2);
+		ret.add($1);
+		ret.add($3);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| optmp4
+	;
+
+optmp4
+	: optmp4 OP1 smallexpr
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($2);
+		ret.add($1);
+		ret.add($3);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| smallexpr
+	;
+
+smallexpr
+	: NAME {$$ = $1;}
+	| NAME {millithula.add("CALL"); millithula.add($1);} '(' optexprs ')' {millithula.add("ENDCALL");}
+	| OP5 smallexpr
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("CALL");
+		ret.add($1);
+		ret.add($2);
+		ret.add("ENDCALL");
+		$$ = ret;
+	}
+	| LITERAL {$$ = $1;}
+	| '(' expr ')' {$$ = $2;}
+	| WHILE '(' expr ')' body {millithula.add("WHILE"); $$ = $3; millithula.add("ENDWHILE");}
+	| IF {millithula.add("IF");} ifexpr {$$ = $1; millithula.add("ENDIF");}
+	;
+
+optexprs
+	: expr {millithula.add($1);} moreexpr
+	|
+	;
+
+moreexpr
+	:
+	| ',' expr {millithula.add($2);} moreexpr
+	;
+
+ifexpr
+	: '(' expr {millithula.add($2);} ')' body elseifexpr
+	;
+
+elseifexpr
+	: ELSEIF {millithula.add("ELSEIF");} '(' expr ')' {millithula.add($4);} body elseifexpr
+	| elseexpr
+	;
+
+elseexpr
+	: ELSE {millithula.add("ELSE");} body
+	|
+	;
+
+body
+	: '{' exprs '}'
+	;
+
+%%
+
+	private NanomorphoLexer lexer;
+
+	private int yylex()
+	{
+		int yyl_return = -1;
+		try
+		{
+			yylval = new NanomorphoParserVal(0);
+			yyl_return = lexer.yylex();
+		}
+		catch (IOException e)
+		{
+			System.err.println("IO error: " + e);
+		}
+//		System.out.println(yyl_return + ": " + yylval.sval);
+		return yyl_return;
+	}
+
+	public void yyerror(String error)
+	{
+		System.err.println("Error: " + error);
+	}
+
+	public NanomorphoParser(Reader r)
+	{
+		lexer = new NanomorphoLexer(r,this);
+	}
+
+	public static void thula(ArrayList<Object> millithula)
+	{
+		int i;
+		int n = millithula.size();
+		for (i = 0; i < n; i++)
+		{
+			if (millithula.get(i).equals("FUN"))
+			{
+				i++;
+				masm.print("#\"");
+				masm.print(millithula.get(++i));
+				masm.print("[f");
+				int tmp = i + 1;
+				while (!millithula.get(++tmp).equals("ENDDECL")) { }
+				masm.print(millithula.get(tmp + 1));
+				masm.println("]\" = ");
+				masm.println("[");
+				
+
+				
+				masm.println("];");
+			}
+
+
+			else if (millithula.get(i).equals("DECL"))
+			{
+				i++;
+				while (!millithula.get(i).equals("ENDDECL"))
+				{
+					masm.println("(MakeVal " + millithula.get(i) + ")");
+					masm.println("(Push)");
+					masm.println("(Store " + var_counter + ")"); /* ... */
+					variable_map.put(millithula.get(i), var_counter++);
+					i++;
+				}
+			}
+
+
+
+		}
+	}
+
+	public static void thula_expr(ArrayList expr)
+	{
+		
+	}
+
+	public static void thula_call(ArrayList<Object> call)
+	{
+		
+	}
+
+
+
+
+
+	public static HashMap function_map;
+	public static HashMap variable_map;
+	public static ArrayList<Object> millithula;
+	public static PrintStream masm;
+
+	public static int args_counter;
+	public static int name_counter;
+	public static int var_counter;
+
+	public static void main(String[] args)
+		throws FileNotFoundException
+	{
+		NanomorphoParser yyparser = new NanomorphoParser(new FileReader(args[0]));
+		if (args.length == 0)
+		{
+			System.err.println("Fatal error. No input file.");
+			System.exit(1);
+		}
+
+		function_map = new HashMap();
+		variable_map = new HashMap();
+		millithula   = new ArrayList<Object>();
+		masm         = new PrintStream(new File(args[0] + ".masm"));
+		name_counter = 0;
+		var_counter  = 0;
+
+//		yyparser.yydebug = true;
+		yyparser.yyparse();
+		System.out.println("Parser finsished!");
+
+
+		print_millithula();
+		System.out.println();
+
+		thula(millithula);
+	}
+
+	public static void print_millithula()
+	{
+		int n = millithula.size();
+
+		System.out.println("Printing the milliþula:");
+		for (int i = 0; i < n; i++)
+		{
+			System.out.println(millithula.get(i));
+		}
+	}
+
+	public static void throw_error(String error)
+	{
+		System.out.println(error);
+		System.exit(4);
+	}

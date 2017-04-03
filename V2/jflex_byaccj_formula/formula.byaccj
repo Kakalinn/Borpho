@@ -1,0 +1,65 @@
+%{
+	import java.io.*;
+%}
+
+%token <sval> NUM
+%type <dval> e,t,f
+
+%%
+
+formula:
+		e			{ System.out.println($1); }
+	;
+
+e:
+		t			{ $$ = $1; }
+	|	e '+' t		{ $$ = $1+$3; }
+	|	e '-' t		{ $$ = $1-$3; }
+	;
+
+t:
+		f			{ $$ = $1; }
+	|	t '*' f		{ $$ = $1*$3; }
+	|	t '/' f		{ $$ = $1/$3; }
+	;
+
+f:
+		NUM			{ $$ = Double.parseDouble($1); }
+	|	'(' e ')'	{ $$ = $2; }
+	;
+
+%%
+
+	private ExprLexer lexer;
+
+	private int yylex()
+	{
+		int yyl_return = -1;
+		try
+		{
+			yylval = new ExprParserVal(0);
+			yyl_return = lexer.yylex();
+		}
+		catch (IOException e)
+		{
+			System.err.println("IO error: "+e);
+		}
+		return yyl_return;
+	}
+
+	public void yyerror( String error )
+	{
+		System.err.println("Error: "+error);
+	}
+
+	public ExprParser( Reader r )
+	{
+		lexer = new ExprLexer(r,this);
+	}
+
+	public static void main( String args[] )
+	  	throws IOException
+	{
+		ExprParser yyparser = new ExprParser(new StringReader(args[0]));
+		yyparser.yyparse();
+	}

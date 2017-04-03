@@ -1,0 +1,18 @@
+"test3.bog.mexe" = main in
+!
+{{
+#"main[f0]" = 
+[
+(MakeVal null)
+
+(MakeVal 1)
+(Call #"-[f1]" 1)
+(Call #"writeln[f1]" 1)
+(MakeVal 1)
+(Return)
+];
+
+}}
+*
+BASIS
+;

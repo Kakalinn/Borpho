@@ -1,6 +1,7 @@
 
 ;;; classic
-fun mja(){
+fun mja()
+{
 	var a;
 	var b;
 	var b;

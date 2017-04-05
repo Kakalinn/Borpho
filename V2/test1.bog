@@ -7,7 +7,7 @@ fun my_func(x, r)
 	else
 	{
 		return x + exp(x);
-	}
+	};
 }
 
 ;;; This is my_func differentiated with respect to x
@@ -28,7 +28,7 @@ fun main(){
 	if((lalli > 193) || (lalli == 0))
 	{
 		writeln("Hallo ballo\n");
-	}
+	};
 	writeln(10.0403e-59);
 
 	lalli = (lalli + 1);

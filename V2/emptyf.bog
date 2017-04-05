@@ -1,0 +1,47 @@
+fun main()
+{
+	f1();
+	f2();
+}
+
+fun f1()
+{
+	
+}
+
+fun f2()
+{
+	var i;
+	i = 0;
+	if (false)
+	{
+
+	}
+	elseif (false)
+	{
+
+	}
+	else
+	{
+
+	};
+
+	if (false)
+	{
+
+	}
+	elseif (true)
+	{
+
+	};
+
+	if (true)
+	{
+
+	};
+
+	while (false)
+	{
+
+	};
+}

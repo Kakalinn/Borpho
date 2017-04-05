@@ -1,8 +1,48 @@
+fun f(x1, x2, x3)
+{
+	var y1, y2;
+	var y3;
+
+	writeln(x1);
+	writeln(x2);
+	writeln(x3);
+
+	y1 = 1;
+	y2 = 2;
+	y3 = 3;
+
+	y1 = x3 + x1;
+	y2 = x1 + -x2;
+	y3 = x3*x3;
+
+	while(y3 < 15)
+	{
+		writeln("HELLO");
+		y3 = y3 + 1;
+	};
+
+	writeln();
+	writeln(y1);
+	writeln(y2);
+	writeln(y3);
+	writeln();
+
+	return "";
+
+;;;	if (y1 == y2)
+;;;	{
+;;;		writeln("Something");
+;;;		writeln("bad");
+;;;		writeln("has");
+;;;		writeln("come");
+;;;		writeln("up");
+;;;		writeln(":(");
+;;;		return "Oppsies";
+;;;	};
+	return "Yeahh";
+}
+
 fun main()
 {
-
-	writeln(-1);
-
-
-	return 1;
+	f(1, 2, 3);
 }

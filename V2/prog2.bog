@@ -1,24 +1,29 @@
 fun main()
 {
 	var a, b, c, d, e;
-	if (true)
+	if (false)
 	{
+		writeln("1");
 		return a;
 	}
-	elseif (true)
+	elseif (false)
 	{
+		writeln("2");
 		return b;
 	}
-	elseif (true)
+	elseif (false)
 	{
+		writeln("3");
 		return c;
 	}
-	elseif (true)
+	elseif (false)
 	{
+		writeln("4");
 		return d;
 	}
 	else
 	{
+		writeln("5");
 		return e;
-	}
+	};
 }

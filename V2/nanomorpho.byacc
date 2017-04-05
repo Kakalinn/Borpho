@@ -4,7 +4,7 @@
 %}
 
 %token <sval> IF, ELSE, ELSEIF, VAR, WHILE, NAME, RETURN, FUN, OP1, OP2, OP3, OP4, OP5, LITERAL, ASSIGNMENT
-%type  <obj> binopexpr, optmp1, optmp2, optmp3, optmp4, expr, smallexpr
+%type  <obj> iftail, optexprs, optexprsm, moreexprs, binopexpr, optmp1, optmp2, optmp3, optmp4, expr, smallexpr
 %%
 
 start
@@ -12,12 +12,15 @@ start
 	;
 
 program
-	: {millithula.add("~FUN");} func
-	| program {millithula.add("~FUN");} func
+	: func
+	| program func
 	;
 
 func
-	: FUN NAME {millithula.add($2); args_counter = 0;} '(' optnames ')' {function_map.put($2, args_counter); millithula.add("~" + args_counter);} '{' decls {millithula.add("~ENDDECL");} body '}' {millithula.add("~ENDFUN");}
+	: FUN NAME {millithula.add($2);}
+		'(' {tmp_arraylist.clear();} optnames {millithula.add(new ArrayList<Object>(tmp_arraylist));} ')'
+		'{' {tmp_arraylist.clear();} decls {millithula.add(new ArrayList<Object>(tmp_arraylist));}
+		{tmp_arraylist.clear();} exprs {millithula.add(new ArrayList<Object>(tmp_arraylist));} '}'
 	;
 
 optnames
@@ -35,24 +38,42 @@ decl
 	;
 
 names
-	: NAME 				{millithula.add($1); args_counter++;}
-	| names ',' NAME 	{millithula.add($3); args_counter++;}
+	: NAME 				{tmp_arraylist.add($1);}
+	| names ',' NAME 	{tmp_arraylist.add($3);}
+	;
+
+exprs
+	: expr {tmp_arraylist.add($1);} ';' exprs
+	|
 	;
 
 expr
-	: NAME ASSIGNMENT expr 		{millithula.add("~ASSIGN"); millithula.add($1); millithula.add($3);}
-	| binopexpr					{$$ = $1;}
+	: NAME ASSIGNMENT expr
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("=");
+		ret.add($1);
+		ret.add($3);
+		$$ = ret;
+	}
+	| RETURN expr
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("return");
+		ret.add($2);
+		$$ = ret;
+	}
+	| binopexpr
 	;
 
 binopexpr
 	: binopexpr OP5 optmp1
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($2);
-		ret.add($1);
-		ret.add($3);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add($3);
+		((ArrayList)ret.get(1)).add($1);
 		$$ = ret;
 	}
 	| optmp1
@@ -62,11 +83,10 @@ optmp1
 	: optmp1 OP4 optmp2
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($2);
-		ret.add($1);
-		ret.add($3);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add($3);
+		((ArrayList)ret.get(1)).add($1);
 		$$ = ret;
 	}
 	| optmp2
@@ -76,11 +96,10 @@ optmp2
 	: optmp2 OP3 optmp3
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($2);
-		ret.add($1);
-		ret.add($3);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add($3);
+		((ArrayList)ret.get(1)).add($1);
 		$$ = ret;
 	}
 	| optmp3
@@ -90,11 +109,10 @@ optmp3
 	: optmp3 OP2 optmp4
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($2);
-		ret.add($1);
-		ret.add($3);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add($3);
+		((ArrayList)ret.get(1)).add($1);
 		$$ = ret;
 	}
 	| optmp4
@@ -104,112 +122,164 @@ optmp4
 	: optmp4 OP1 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($2);
-		ret.add($1);
-		ret.add($3);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add($3);
+		((ArrayList)ret.get(1)).add($1);
 		$$ = ret;
 	}
 	| smallexpr
 	;
 
 smallexpr
-	: NAME {$$ = $1;}
+	: NAME
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add($1);
+		$$ = ret;
+	}
 	| NAME '(' optexprs ')'
 	{
-		expr_tmp.add("~ENDCALL");
-//		ArrayList<Object> ret = new ArrayList<Object>(expr_tmp);
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add($1);
-		int n = expr_tmp.size();
-		for (int i = 0; i < n; i++)
-		{
-			ret.add(expr_tmp.get(i));
-		}
-		expr_tmp.clear();
+		ret.add($3);
 		$$ = ret;
 	}
 	| OP5 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
 		ret.add($1);
-		ret.add($2);
-		ret.add("~ENDCALL");
+		tmp2.add($2);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
 		$$ = ret;
 	}
 	| OP4 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
 		ret.add($1);
-		ret.add($2);
-		ret.add("~ENDCALL");
+		tmp2.add($2);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
 		$$ = ret;
 	}
 	| OP3 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
 		ret.add($1);
-		ret.add($2);
-		ret.add("~ENDCALL");
+		tmp2.add($2);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
 		$$ = ret;
 	}
 	| OP2 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
 		ret.add($1);
-		ret.add($2);
-		ret.add("~ENDCALL");
+		tmp2.add($2);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
 		$$ = ret;
 	}
 	| OP1 smallexpr
 	{
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
 		ret.add($1);
-		ret.add($2);
-		ret.add("~ENDCALL");
+		tmp2.add($2);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
 		$$ = ret;
 	}
-	| LITERAL {$$ = $1;}
-	| '(' expr ')' {$$ = $2;}
+	| WHILE '(' expr ')' '{' optexprsm '}'
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("while");
+		ret.add($3);
+		ret.add($6);
+		$$ = ret;
+	}
+	| IF '(' expr ')' '{' optexprsm '}' iftail
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("if");
+		ret.add($3);
+		ret.add($6);
+		ret.add($8);
+		$$ = ret;
+	}
+	| LITERAL
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add($1);
+		$$ = ret;
+	}
+	| '(' expr ')'
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add($2);
+		$$ = ret;
+	}
 	;
 
 optexprs
-	: expr {expr_tmp.add($1);} moreexpr
-	| 
+	: expr moreexprs
+	{
+		ArrayList<Object> ret = new ArrayList<Object>((ArrayList)$2);
+		ret.add($1);
+		$$ = ret;
+	}
+	| {$$ = new ArrayList<Object>();}
 	;
 
-moreexpr
-	: ',' expr {expr_tmp.add($2);} moreexpr
-	|
+moreexprs
+	: ',' expr moreexprs
+	{
+		ArrayList<Object> ret = new ArrayList<Object>((ArrayList)$3);
+		ret.add($2);
+		$$ = ret;
+	}
+	| {$$ = new ArrayList<Object>();}
 	;
 
-ifexpr
-	: '(' expr {millithula.add($2);} ')' '{' body '}' {millithula.add("~ENDIF");} elseifexpr
+optexprsm
+	: expr ';' optexprsm
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add($1);
+		ret.addAll((ArrayList)$3);
+		$$ = ret;
+	}
+	| {$$ = new ArrayList<Object>();}
 	;
 
-elseifexpr
-	: ELSEIF {millithula.add("~ELSEIF");} '(' expr ')' {millithula.add($4);} '{' body '}' {millithula.add("~ENDELSEIF");} elseifexpr
-	| elseexpr
-	;
-
-elseexpr
-	: ELSE {millithula.add("~ELSE");} '{' body '}' {millithula.add("~ENDELSE");}
-	|
-	;
-
-body
-	: expr ';' {millithula.add($1);} body
-	| WHILE '(' expr ')' {millithula.add("~WHILE"); millithula.add($3);} '{' body '}' {millithula.add("~ENDWHILE");} body
-	| IF {millithula.add("~IF");} ifexpr body
-	| RETURN {millithula.add("~RETURN");} expr ';' {millithula.add($3);} body
-	|
+iftail
+	: ELSEIF '(' expr ')' '{' optexprsm '}' iftail
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("elseif");
+		ret.add($3);
+		ret.add($6);
+		ret.add($8);
+		$$ = ret;
+	}
+	| ELSE '{' optexprsm '}'
+	{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("else");
+		ret.add($3);
+		$$ = ret;
+	}
+	| {$$ = new ArrayList<Object>();}
 	;
 
 %%
@@ -228,7 +298,8 @@ body
 		{
 			System.err.println("IO error: " + e);
 		}
-//		System.out.println("Lexer debug: " + yyl_return + " -> " + yylval.sval);
+//		System.out.println("Debug " + yylval.sval + "(" + yyl_return + ")");
+
 		return yyl_return;
 	}
 
@@ -242,235 +313,186 @@ body
 		lexer = new NanomorphoLexer(r,this);
 	}
 
-	public static void thula(ArrayList<Object> millithula)
+	public static void thula()
 	{
 		int i = 0;
-		while (true)
+		int n = millithula.size();
+		while (i < n)
 		{
-			String millithulu_takn = (String)millithula.get(i);
+			variable_map.clear();
+			var_counter = 0;
+			masm.print("#\"");
+			masm.print(millithula.get(i++));
+			masm.print("[f" + ((ArrayList)millithula.get(i)).size());
+			masm.println("]\" = ");
+			masm.println("[");
+			
+			thula_args((ArrayList)millithula.get(i++));
+			
+			thula_decl((ArrayList)millithula.get(i++));
 
-			if (millithulu_takn.equals("~FUN"))
+			int m = ((ArrayList)millithula.get(i)).size();
+			for (int j = 0; j < m; j++)
+				thula_expr((ArrayList)((ArrayList)millithula.get(i)).get(j));
+
+			i++;
+
+			masm.println("(Return)");
+			masm.println("];");
+			masm.println();
+		}
+	}
+
+	public static void thula_args(ArrayList ls)
+	{
+		int n = ls.size();
+		for (int i = 0; i < n; i++)
+		{
+			if (variable_map.get((String)ls.get(i)) != null) throw_error("Variable \"" + (String)ls.get(i) + "\" is already declared.");
+			variable_map.put((String)ls.get(i), (Integer)var_counter);
+			var_counter++;
+		}
+	}
+
+	public static void thula_decl(ArrayList ls)
+	{
+		int n = ls.size();
+		masm.println("(MakeVal null)");
+		for (int i = 0; i < n; i++)
+		{
+			if (variable_map.get((String)ls.get(i)) != null) throw_error("Variable \"" + (String)ls.get(i) + "\" is already declared.");
+			variable_map.put((String)ls.get(i), (Integer)var_counter);
+			masm.println("(Push)");
+			var_counter++;
+		}
+	}
+
+	public static void thula_expr(ArrayList expr)
+	{
+		if (expr.size() == 0) return;
+		if (expr.size() == 1)
+		{
+			if (expr.get(0) instanceof ArrayList)
 			{
-				var_counter = 0;
-				variable_map.clear();
-
-				i++;
-				masm.print("#\"");
-				masm.print(millithula.get(i));
-				masm.print("[f");
-
-				i++;
-				millithulu_takn = (String)millithula.get(i);
-				String tmp_str = "";
-				while (((String)millithula.get(i)).charAt(0) != '~')
-				{
-//					System.out.println("Putlllting variable " + millithulu_takn);
-					if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
-					variable_map.put(millithulu_takn, (Integer)var_counter);
-					var_counter++;
-					millithulu_takn = (String)millithula.get(++i);
-				}
-				masm.print(((String)millithula.get(i++)).substring(1, ((String)millithula.get(i - 1)).length()));
-				masm.println("]\" = ");
-				masm.println("[");
-				masm.println("(MakeVal null)");
-				millithulu_takn = (String)millithula.get(i);
-//				while (!millithulu_takn.equals("~ENDFUN"))
-				{
-					masm.println(tmp_str);
-					millithulu_takn = (String)millithula.get(i++);
-					while (!millithulu_takn.equals("~ENDDECL"))
-					{
-//						System.out.println("Putting variable " + millithulu_takn);
-						if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
-						variable_map.put(millithulu_takn, (Integer)var_counter);
-						masm.println("(Push)");
-						var_counter++;
-						millithulu_takn = (String)millithula.get(i++);
-					}
-//					System.out.println("fun decl done");
-
-//					System.out.println("DEBUG: " + i);
-//					System.out.println("Smá test: " + variable_map);
-					i = thula_body(i, "~ENDFUN");
-//					System.out.println("DEBUG: " + i);
-				}
-//				System.out.println("!!!!!!!!!!!!!!!! " + var_counter);
-				masm.println("];\n");
+				thula_expr((ArrayList)expr.get(0));
+				return;
 			}
-			else if(millithulu_takn.equals("~END"))
+			if (is_literal((String)expr.get(0)))
 			{
-//				System.out.println("Should end");
+				masm.println("(MakeVal " + expr.get(0) + ")");
 				return;
 			}
 			else
 			{
-				throw_error("Expected a function declaration.");
+				Integer loc = variable_map.get((String)expr.get(0));
+				if (loc == null) throw_error("Unknown variable \"" + expr.get(0) + "\"");
+				masm.println("(Fetch " + loc + ")");
+				return;
+			}
+		}
+
+		String head = (String)expr.get(0);
+
+
+		if (head.equals("if"))
+		{
+			int bottom_label = name_counter++;
+			int next_label   = name_counter++;
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(GoFalse _L" + next_label + ")");
+
+			int n = ((ArrayList)expr.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)expr.get(2)).get(i));
+
+			masm.println("(Go _L" + bottom_label + ")");
+			masm.println("_L" + next_label + ":");
+
+			thula_iftl((ArrayList)expr.get(3), bottom_label);
+			return;
+		}
+
+		if (head.equals("while"))
+		{
+			int top_label = name_counter++;
+			int bot_label = name_counter++;
+			masm.println("_L" + top_label + ":");
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(GoFalse _L" + bot_label + ")");
+
+			int n = ((ArrayList)expr.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)expr.get(2)).get(i));
+
+			masm.println("(Go _L" + top_label + ")");
+			masm.println("_L" + bot_label + ":");
+			return;
+		}
+
+		if (head.equals("="))
+		{
+			Integer loc = variable_map.get((String)expr.get(1));
+			if (loc == null) throw_error("Variable \"" + head + "\" not found");
+
+			thula_expr((ArrayList)expr.get(2));
+
+			masm.println("(Store " + loc + ")");
+			return;
+		}
+
+		if (head.equals("return"))
+		{
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(Return)");
+		}
+		
+		else
+		{
+			int n = ((ArrayList)expr.get(1)).size();
+			for (int i = 0; i < n; i++)
+			{
+				if (i != 0) masm.println("(Push)");
+				thula_expr((ArrayList)((ArrayList)expr.get(1)).get(n - i - 1));
 			}
 
-//			if (millithulu_takn.equals("RETURN"))
-//			{
-//				thula_expr(millithula.get(i + 1));
-//				masm.println("(Return)");
-//			}
+			masm.println("(Call #\"" + head + "[f" + n + "]\" " + n + ")");
+			return;
 		}
 	}
 
-	public static int thula_body(int i, String exit)
+	public static void thula_iftl(ArrayList ls, int bottom_label)
 	{
-		while (true)
+		if (ls.size() == 0) 
 		{
-//			System.out.println("BODY LYKKJA + " + (millithula.get(i) instanceof ArrayList));
-			Object check = millithula.get(i);
-			if (check instanceof ArrayList)
-			{
-				thula_call((ArrayList)millithula.get(i));
-				i++;
-				continue;
-			}
-			else if (check instanceof String)
-			{
-				String millithulu_takn = (String)millithula.get(i++);
-				if (millithulu_takn.equals("~ASSIGN"))
-				{
-//					System.out.println(variable_map);
-					String name = (String)millithula.get(i++);
-					thula_expr(millithula.get(i));
-					i++;
-//					System.out.println("Assigin " + name);
-					Integer var_loc = variable_map.get(name);
-					if (var_loc == null) throw_error("Can't assign unknown variable \"" + name + "\"");
-//					System.out.println("Done " + var_loc);
-					masm.println("(Store " + var_loc + ")");
-					continue;
-				}
-				if (millithulu_takn.equals("~IF"))
-				{
-					int bottom_label = name_counter++;
-					thula_expr(millithula.get(i));
-					i++;
-					masm.println("(GoFalse _L" + (name_counter) + ")");
-					i = thula_body(i, "~ENDIF");
-					masm.println("(Go _L" + bottom_label + ")");
-					masm.println("_L" + (name_counter++) + ":");
-					if (millithula.get(i) instanceof String)
-					while (millithula.get(i).equals("~ELSEIF"))
-					{
-						int label = name_counter;
-
-						i++;
-						thula_expr(millithula.get(i));
-						i++;
-						masm.println("(GoFalse _L" + label + ")");
-						i = thula_body(i, "~ENDELSEIF");
-						masm.println("(Go _L" + bottom_label + ")");
-						masm.println("_L" + label + ":");
-						name_counter++;
-					}
-					if (millithula.get(i) instanceof String)
-					if (millithula.get(i).equals("~ELSE"))
-					{
-						i++;
-						i = thula_body(i, "~ENDELSE");
-					}
-					masm.println("_L" + bottom_label + ":");
-
-					continue;
-				}
-				if (millithulu_takn.equals("~WHILE"))
-				{
-					int label1 = name_counter;
-					int label2 = name_counter + 1;
-					name_counter += 2;
-
-					masm.println("_L" + label1 + ":");
-					thula_expr(millithula.get(i));
-					masm.println("(GoFalse _L" + (label2) + ")");
-					i = thula_body(i, "~ENDWHILE");
-					masm.println("(MakeVal 1)");
-					masm.println("(Go _L" + label1 + ")");
-					masm.println("_L" + label2 + ":");
-
-					continue;
-				}
-				if (millithulu_takn.equals("~RETURN"))
-				{
-					thula_expr(millithula.get(i));
-					i++;
-					masm.println("(Return)");
-					continue;
-				}
-				if (millithulu_takn.equals(exit))
-				{
-					return i;
-				}
-				else
-				{
-					continue;
-				}
-			}
-			else
-			{
-				throw_error("Weird error :(");
-			}
-			return i;
+			masm.println("_L" + bottom_label + ":");
+			return;
 		}
-	}
-
-	public static void thula_expr(Object expr)
-	{
-		if (!(expr instanceof String))
+		if (((String)ls.get(0)).equals("elseif"))
 		{
-//				System.out.println("INN " + expr);
-			thula_call((ArrayList<Object>)expr);
-//				System.out.println("'UT");
+			int next_label = name_counter++;
+			thula_expr((ArrayList)ls.get(1));
+			masm.println("(GoFalse _L" + next_label + ")");
+
+			int n = ((ArrayList)ls.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)ls.get(2)).get(i));
+
+			masm.println("(Go _L" + bottom_label + ")");
+			masm.println("_L" + next_label + ":");
+
+			thula_iftl((ArrayList)ls.get(3), bottom_label);
 		}
 		else
 		{
-			if (is_literal((String)expr))
-			{
-				masm.println("(MakeVal " + expr + ")");
-			}
-			else
-			{
-				Integer var_loc = variable_map.get(expr);
-				if (var_loc == null) throw_error("Undefined variable: " + expr);
+			int n = ((ArrayList)ls.get(1)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)ls.get(1)).get(i));
 
-				masm.println("(Fetch " + var_loc + ")");
-			}
+			masm.println("_L" + bottom_label + ":");
+			return;
 		}
 	}
 
-	//TODO Fix
-	public static void thula_call(ArrayList call)
-	{
-		int i = 1;
-		String name = (String)call.get(1);
-
-		if (call.size() != 3)
-		{
-			while (true)
-			{
-				i++;
-//				System.out.println("TEST: " + i + ", " + call.size());
-				if ((call.get(i + 1) instanceof String) && ((String)call.get(i + 1)).equals("~ENDCALL"))
-				{
-					thula_expr(call.get(i));
-					break;
-				}
-				else
-				{
-					thula_expr(call.get(i));
-					masm.println("(Push)");
-				}
-			}
-			masm.println("(Call #\"" + name + "[f" + (i - 1) + "]\" " + (i - 1) + ")");
-		}
-		else
-		{
-			masm.println("(Call #\"" + name + "[f0]\" 0)");
-		}
-	}
 
 	public static boolean is_literal(String str)
 	{
@@ -500,27 +522,17 @@ body
 			return false;
 		}
 	}
-
-	public static void clean_millithula()
-	{
-		ArrayList<Object> tmp = new ArrayList<Object>();
-		int n = millithula.size();
-		for (int i = 0; i < n; i++)
-			if (millithula.get(i) != null) tmp.add(millithula.get(i));
-
-		millithula = tmp;
-	}
+		
+		
 
 
 
 
-	public static HashMap<String, Integer> function_map;
 	public static HashMap<String, Integer> variable_map;
 	public static ArrayList<Object> millithula;
-	public static ArrayList<Object> expr_tmp;
+	public static ArrayList<Object> tmp_arraylist;
 	public static PrintStream masm;
 
-	public static int args_counter;
 	public static int name_counter;
 	public static int var_counter;
 
@@ -534,43 +546,24 @@ body
 			System.exit(1);
 		}
 
-		function_map = new HashMap<String, Integer>();
-		variable_map = new HashMap<String, Integer>();
-		millithula   = new ArrayList<Object>();
-		expr_tmp 	 = new ArrayList<Object>();
-		masm         = new PrintStream(new File(args[0] + ".masm"));
-		name_counter = 0;
-		var_counter  = 1;
+		variable_map  = new HashMap<String, Integer>();
+		millithula    = new ArrayList<Object>();
+		tmp_arraylist = new ArrayList<Object>();
+		masm          = new PrintStream(new File(args[0] + ".masm"));
+		name_counter  = 0;
+		var_counter   = 0;
 
-//		yyparser.yydebug = true;
 		System.out.println("Parsing!");
 		yyparser.yyparse();
-		millithula.add("~END");
 		System.out.println("Parser finsished!");
-
-
-
-		clean_millithula();
-//		print_millithula();
 
 		System.out.println();
 
 		masm.println("\"" + args[0] + ".mexe\" = main in\n!\n{{");
-		thula(millithula);
+		thula();
 		masm.println("}}\n*\nBASIS\n;");
 
 		System.out.println("Comilation complete!");
-	}
-
-	public static void print_millithula()
-	{
-		int n = millithula.size();
-
-		System.out.println("Printing the milliþula:");
-		for (int i = 0; i < n; i++)
-		{
-			System.out.println(millithula.get(i));
-		}
 	}
 
 	public static void throw_error(String error)

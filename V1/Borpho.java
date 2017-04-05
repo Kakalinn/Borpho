@@ -411,7 +411,7 @@ final static String yyrule[] = {
 "body :",
 };
 
-//#line 216 "nanomorpho.byacc"
+//#line 215 "nanomorpho.byacc"
 
 	private NanomorphoLexer lexer;
 
@@ -427,7 +427,6 @@ final static String yyrule[] = {
 		{
 			System.err.println("IO error: " + e);
 		}
-//		System.out.println("Lexer debug: " + yyl_return + " -> " + yylval.sval);
 		return yyl_return;
 	}
 
@@ -463,7 +462,6 @@ final static String yyrule[] = {
 				String tmp_str = "";
 				while (((String)millithula.get(i)).charAt(0) != '~')
 				{
-//					System.out.println("Putlllting variable " + millithulu_takn);
 					if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
 					variable_map.put(millithulu_takn, (Integer)var_counter);
 					var_counter++;
@@ -474,44 +472,30 @@ final static String yyrule[] = {
 				masm.println("[");
 				masm.println("(MakeVal null)");
 				millithulu_takn = (String)millithula.get(i);
-//				while (!millithulu_takn.equals("~ENDFUN"))
 				{
 					masm.println(tmp_str);
 					millithulu_takn = (String)millithula.get(i++);
 					while (!millithulu_takn.equals("~ENDDECL"))
 					{
-//						System.out.println("Putting variable " + millithulu_takn);
 						if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
 						variable_map.put(millithulu_takn, (Integer)var_counter);
 						masm.println("(Push)");
 						var_counter++;
 						millithulu_takn = (String)millithula.get(i++);
 					}
-//					System.out.println("fun decl done");
-
-//					System.out.println("DEBUG: " + i);
-//					System.out.println("Smá test: " + variable_map);
 					i = thula_body(i, "~ENDFUN");
-//					System.out.println("DEBUG: " + i);
 				}
-//				System.out.println("!!!!!!!!!!!!!!!! " + var_counter);
+				masm.println("(Return)");
 				masm.println("];\n");
 			}
 			else if(millithulu_takn.equals("~END"))
 			{
-//				System.out.println("Should end");
 				return;
 			}
 			else
 			{
 				throw_error("Expected a function declaration.");
 			}
-
-//			if (millithulu_takn.equals("RETURN"))
-//			{
-//				thula_expr(millithula.get(i + 1));
-//				masm.println("(Return)");
-//			}
 		}
 	}
 
@@ -519,7 +503,6 @@ final static String yyrule[] = {
 	{
 		while (true)
 		{
-//			System.out.println("BODY LYKKJA + " + (millithula.get(i) instanceof ArrayList));
 			Object check = millithula.get(i);
 			if (check instanceof ArrayList)
 			{
@@ -532,14 +515,11 @@ final static String yyrule[] = {
 				String millithulu_takn = (String)millithula.get(i++);
 				if (millithulu_takn.equals("~ASSIGN"))
 				{
-//					System.out.println(variable_map);
 					String name = (String)millithula.get(i++);
 					thula_expr(millithula.get(i));
 					i++;
-//					System.out.println("Assigin " + name);
 					Integer var_loc = variable_map.get(name);
 					if (var_loc == null) throw_error("Can't assign unknown variable \"" + name + "\"");
-//					System.out.println("Done " + var_loc);
 					masm.println("(Store " + var_loc + ")");
 					continue;
 				}
@@ -620,9 +600,7 @@ final static String yyrule[] = {
 	{
 		if (!(expr instanceof String))
 		{
-//				System.out.println("INN " + expr);
 			thula_call((ArrayList<Object>)expr);
-//				System.out.println("'UT");
 		}
 		else
 		{
@@ -640,7 +618,6 @@ final static String yyrule[] = {
 		}
 	}
 
-	//TODO Fix
 	public static void thula_call(ArrayList call)
 	{
 		int i = 1;
@@ -651,7 +628,6 @@ final static String yyrule[] = {
 			while (true)
 			{
 				i++;
-//				System.out.println("TEST: " + i + ", " + call.size());
 				if ((call.get(i + 1) instanceof String) && ((String)call.get(i + 1)).equals("~ENDCALL"))
 				{
 					thula_expr(call.get(i));
@@ -741,16 +717,12 @@ final static String yyrule[] = {
 		name_counter = 0;
 		var_counter  = 1;
 
-//		yyparser.yydebug = true;
 		System.out.println("Parsing!");
 		yyparser.yyparse();
 		millithula.add("~END");
 		System.out.println("Parser finsished!");
 
-
-
 		clean_millithula();
-//		print_millithula();
 
 		System.out.println();
 
@@ -777,7 +749,7 @@ final static String yyrule[] = {
 		System.out.println(error);
 		System.exit(4);
 	}
-//#line 709 "Borpho.java"
+//#line 681 "Borpho.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -1039,7 +1011,6 @@ case 30:
 //#line 120 "nanomorpho.byacc"
 {
 		expr_tmp.add("~ENDCALL");
-/*		ArrayList<Object> ret = new ArrayList<Object>(expr_tmp);*/
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
 		ret.add(val_peek(3).sval);
@@ -1053,7 +1024,7 @@ case 30:
 	}
 break;
 case 31:
-//#line 135 "nanomorpho.byacc"
+//#line 134 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
@@ -1064,7 +1035,7 @@ case 31:
 	}
 break;
 case 32:
-//#line 144 "nanomorpho.byacc"
+//#line 143 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
@@ -1075,7 +1046,7 @@ case 32:
 	}
 break;
 case 33:
-//#line 153 "nanomorpho.byacc"
+//#line 152 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
@@ -1086,7 +1057,7 @@ case 33:
 	}
 break;
 case 34:
-//#line 162 "nanomorpho.byacc"
+//#line 161 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
@@ -1097,7 +1068,7 @@ case 34:
 	}
 break;
 case 35:
-//#line 171 "nanomorpho.byacc"
+//#line 170 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
 		ret.add("~CALL");
@@ -1108,74 +1079,74 @@ case 35:
 	}
 break;
 case 36:
-//#line 179 "nanomorpho.byacc"
+//#line 178 "nanomorpho.byacc"
 {yyval.obj = val_peek(0).sval;}
 break;
 case 37:
-//#line 180 "nanomorpho.byacc"
+//#line 179 "nanomorpho.byacc"
 {yyval.obj = val_peek(1).obj;}
 break;
 case 38:
-//#line 184 "nanomorpho.byacc"
+//#line 183 "nanomorpho.byacc"
 {expr_tmp.add(val_peek(0).obj);}
 break;
 case 41:
-//#line 189 "nanomorpho.byacc"
+//#line 188 "nanomorpho.byacc"
 {expr_tmp.add(val_peek(0).obj);}
 break;
 case 44:
-//#line 194 "nanomorpho.byacc"
+//#line 193 "nanomorpho.byacc"
 {millithula.add(val_peek(0).obj);}
 break;
 case 45:
-//#line 194 "nanomorpho.byacc"
+//#line 193 "nanomorpho.byacc"
 {millithula.add("~ENDIF");}
 break;
 case 47:
-//#line 198 "nanomorpho.byacc"
+//#line 197 "nanomorpho.byacc"
 {millithula.add("~ELSEIF");}
 break;
 case 48:
-//#line 198 "nanomorpho.byacc"
+//#line 197 "nanomorpho.byacc"
 {millithula.add(val_peek(1).obj);}
 break;
 case 49:
-//#line 198 "nanomorpho.byacc"
+//#line 197 "nanomorpho.byacc"
 {millithula.add("~ENDELSEIF");}
 break;
 case 52:
-//#line 203 "nanomorpho.byacc"
+//#line 202 "nanomorpho.byacc"
 {millithula.add("~ELSE");}
 break;
 case 53:
-//#line 203 "nanomorpho.byacc"
+//#line 202 "nanomorpho.byacc"
 {millithula.add("~ENDELSE");}
 break;
 case 55:
-//#line 208 "nanomorpho.byacc"
+//#line 207 "nanomorpho.byacc"
 {millithula.add(val_peek(1).obj);}
 break;
 case 57:
-//#line 209 "nanomorpho.byacc"
+//#line 208 "nanomorpho.byacc"
 {millithula.add("~WHILE"); millithula.add(val_peek(1).obj);}
 break;
 case 58:
-//#line 209 "nanomorpho.byacc"
+//#line 208 "nanomorpho.byacc"
 {millithula.add("~ENDWHILE");}
 break;
 case 60:
-//#line 210 "nanomorpho.byacc"
+//#line 209 "nanomorpho.byacc"
 {millithula.add("~IF");}
 break;
 case 62:
-//#line 211 "nanomorpho.byacc"
+//#line 210 "nanomorpho.byacc"
 {millithula.add("~RETURN");}
 break;
 case 63:
-//#line 211 "nanomorpho.byacc"
+//#line 210 "nanomorpho.byacc"
 {millithula.add(val_peek(1).obj);}
 break;
-//#line 1102 "Borpho.java"
+//#line 1073 "Borpho.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

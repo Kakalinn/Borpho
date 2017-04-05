@@ -24,6 +24,7 @@ _L1:
 (Call #"+[f2]" 2)
 (Return)
 _L0:
+(Return)
 ];
 
 #"d_my_func[f2]" = 
@@ -52,6 +53,7 @@ _L0:
 (Push)
 (Fetch 1)
 (Call #"+[f2]" 2)
+(Return)
 (Return)
 ];
 
@@ -95,6 +97,7 @@ _L2:
 (Fetch 0)
 (Call #"writeln[f1]" 1)
 (MakeVal 1)
+(Return)
 (Return)
 ];
 

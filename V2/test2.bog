@@ -16,11 +16,11 @@ fun ans(n)
 		if(f % 2 == 0)
 		{
 			res = res + f;
-		}
+		};
 		f_tmp = f_last;
 		f_last = f;
 		f = f_last + f_tmp;
-	}
+	};
 	
 
 	return res;

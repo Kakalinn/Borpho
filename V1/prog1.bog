@@ -11,22 +11,22 @@ fun main()
 
 fun rec_fib(n)
 {
-	var this, is, a, test, typpi;
+	var this, is, a, test, epli;
 	if (true)
 	{
 		this = 0;
 	}
 	elseif (1 == 1)
 	{
-		typpi = typpi;
+		epli = epli;
 	}
 	elseif (1 == 1)
 	{
-		typpi = typpi;
+		epli = epli;
 	}
 	elseif (1 == 1)
 	{
-		typpi = typpi;
+		epli = epli;
 	}
 	else
 	{

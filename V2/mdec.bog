@@ -1,0 +1,12 @@
+fun main()
+{
+	var x1, x2, x3, x4, x5;
+	x1 = x2 = x3 = x4 = x5 = 10101;
+
+	writeln();
+	writeln(x1);
+	writeln(x2);
+	writeln(x3);
+	writeln(x4);
+	writeln(x5);
+}

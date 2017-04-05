@@ -1,18 +1,48 @@
 "test3.bog.mexe" = main in
 !
 {{
-#"main[f0]" = 
+#"main[f3]" = 
 [
 (MakeVal null)
 
-(MakeVal 1)
+(Push)
+(Push)
+(Push)
+(Fetch 3)
+(Push)
+(Fetch 0)
+(Call #"+[f2]" 2)
+(Store 3)
+(Fetch 4)
+(Push)
+(Fetch 1)
 (Call #"-[f1]" 1)
+(Call #"+[f2]" 2)
+(Store 4)
+(Fetch 5)
+(Push)
+(Fetch 2)
+(Call #"*[f2]" 2)
+(Store 5)
+(Fetch 3)
+(Push)
+(Fetch 4)
+(Call #"==[f2]" 2)
+(GoFalse _L1)
+(MakeVal "Something")
 (Call #"writeln[f1]" 1)
-(MakeVal 1)
+(MakeVal "bad")
+(Call #"writeln[f1]" 1)
+(MakeVal "has")
+(Call #"writeln[f1]" 1)
+(MakeVal "come")
+(Call #"writeln[f1]" 1)
+(MakeVal "up")
+(Call #"writeln[f1]" 1)
+(MakeVal ":(")
+(Call #"writeln[f1]" 1)
+(MakeVal "Oppsies")
 (Return)
-];
-
-}}
-*
-BASIS
-;
+(Go _L0)
+_L1:
+_L0:

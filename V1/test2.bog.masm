@@ -55,6 +55,7 @@ _L2:
 _L1:
 (Fetch 4)
 (Return)
+(Return)
 ];
 
 #"main[f0]" = 
@@ -71,6 +72,7 @@ _L1:
 (Call #"++[f2]" 2)
 (Call #"writeln[f1]" 1)
 (MakeVal 0)
+(Return)
 (Return)
 ];
 

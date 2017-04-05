@@ -285,6 +285,7 @@ body
 					}
 					i = thula_body(i, "~ENDFUN");
 				}
+				masm.println("(Return)");
 				masm.println("];\n");
 			}
 			else if(millithulu_takn.equals("~END"))
@@ -522,7 +523,6 @@ body
 		System.out.println("Parser finsished!");
 
 		clean_millithula();
-		print_millithula();
 
 		System.out.println();
 

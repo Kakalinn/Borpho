@@ -174,97 +174,90 @@ public final static short LITERAL=270;
 public final static short ASSIGNMENT=271;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
-    0,   10,    8,   11,    8,   12,   14,   17,    9,   13,
-   13,   15,   15,   19,   18,   18,    6,    6,    1,    1,
-    2,    2,    3,    3,    4,    4,    5,    5,    7,    7,
-    7,    7,    7,    7,    7,    7,    7,   22,   20,   20,
-   23,   21,   21,   25,   27,   24,   28,   29,   30,   26,
-   26,   32,   31,   31,   33,   16,   34,   35,   16,   36,
-   16,   37,   38,   16,   16,
+    0,   12,   12,   14,   16,   17,   19,   20,   22,   23,
+   13,   15,   15,   18,   18,   25,   24,   24,   26,   21,
+   21,   10,   10,   10,    5,    5,    6,    6,    7,    7,
+    8,    8,    9,    9,   11,   11,   11,   11,   11,   11,
+   11,   11,   11,   11,   11,    2,    2,    4,    4,    3,
+    3,    1,    1,    1,
 };
 final static short yylen[] = {                            2,
-    1,    0,    2,    0,    3,    0,    0,    0,   12,    1,
-    0,    3,    0,    2,    1,    3,    3,    1,    3,    1,
-    3,    1,    3,    1,    3,    1,    3,    1,    1,    4,
-    2,    2,    2,    2,    2,    1,    3,    0,    3,    0,
-    0,    4,    0,    0,    0,    9,    0,    0,    0,   11,
-    1,    0,    5,    0,    0,    4,    0,    0,   10,    0,
-    4,    0,    0,    6,    0,
+    1,    1,    2,    0,    0,    0,    0,    0,    0,    0,
+   16,    1,    0,    3,    0,    2,    1,    3,    0,    4,
+    0,    3,    2,    1,    3,    1,    3,    1,    3,    1,
+    3,    1,    3,    1,    1,    4,    2,    2,    2,    2,
+    2,    7,    8,    1,    3,    2,    0,    3,    0,    3,
+    0,    8,    4,    0,
 };
-final static short yydefred[] = {                         2,
-    0,    0,    0,    0,    0,    3,    5,    6,    0,    0,
-   15,    0,    0,    7,    0,    0,   16,   13,    0,    0,
-    0,    0,    0,   60,    0,    0,   62,    0,    0,    0,
-    0,    0,   36,    0,    0,    0,    0,    0,    0,    0,
-   28,    0,   12,    0,    0,    0,    0,    0,    0,   35,
-   34,   33,   32,   31,    0,    0,    0,    0,    0,    0,
-   55,    9,    0,    0,    0,   17,   38,    0,    0,   37,
-    0,    0,    0,    0,   27,    0,   44,   61,   57,    0,
-   30,   63,   56,    0,    0,    0,   39,    0,    0,    0,
-   41,   64,    0,    0,    0,    0,   58,   42,   45,    0,
-    0,   59,   52,   47,   46,   51,    0,    0,    0,    0,
-    0,    0,   53,   48,    0,    0,    0,   49,    0,   50,
+final static short yydefred[] = {                         0,
+    0,    0,    0,    2,    4,    3,    0,    5,    0,   17,
+    6,    0,    0,    0,    0,   18,    7,   15,    0,    0,
+    9,    0,    0,    0,   14,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,   44,    0,    0,    0,    0,    0,
+    0,   19,   34,   10,    0,    0,    0,    0,   23,    0,
+   41,   40,   39,   38,   37,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,   22,    0,    0,   45,    0,
+    0,    0,    0,   33,    0,   11,    0,    0,   36,    0,
+   46,   20,    0,    0,    0,    0,    0,    0,   48,    0,
+    0,   42,    0,    0,   43,   50,    0,    0,    0,    0,
+   53,    0,    0,    0,    0,   52,
 };
-final static short yydgoto[] = {                          1,
-   35,   36,   37,   38,   39,   40,   41,    2,    6,    3,
-    4,    9,   12,   16,   19,   42,   21,   13,   22,   68,
-   87,   80,   95,   64,   84,  105,  101,  108,  115,  119,
-  106,  107,   76,   85,  100,   44,   48,   88,
+final static short yydgoto[] = {                          2,
+   95,   67,   86,   81,   37,   38,   39,   40,   41,   87,
+   43,    3,    4,    7,   11,    9,   13,   19,   18,   21,
+   44,   24,   63,   12,   22,   62,
 };
-final static short yysindex[] = {                         0,
-    0,    0, -256, -256, -247,    0,    0,    0,  -22, -243,
-    0,  -27,  -21,    0, -240,  -99,    0,    0, -235, -243,
-    5,  -16,  -21,    0,   -3,  -40,    0,  -10,  -10,  -10,
-  -10,  -10,    0,   14, -237, -230, -221, -219, -217,   -9,
-    0,  -76,    0,   12,   14,   14,   14,   14,   13,    0,
-    0,    0,    0,    0,   15,  -10,  -10,  -10,  -10,  -10,
-    0,    0,   14,    5,   17,    0,    0,   18,   -4,    0,
- -230, -221, -219, -217,    0,    5,    0,    0,    0,   16,
-    0,    0,    0,   21,  -60,   14,    0,    5,  -57,    5,
-    0,    0,    5,  -58,   16,  -55,    0,    0,    0,    5,
- -248,    0,    0,    0,    0,    0,  -52,   37,    5,   14,
-  -44,   41,    0,    0,  -39,    5,  -37,    0, -248,    0,
+final static short yysindex[] = {                      -256,
+ -250,    0, -256,    0,    0,    0,  -26,    0, -245,    0,
+    0,  -25,  -23, -242, -100,    0,    0,    0, -235, -245,
+    0,  -32,  -25,  -19,    0,   -4,   -3,  -40,  -19,   -5,
+   -5,   -5,   -5,   -5,    0,  -19, -231, -229, -227, -225,
+ -222,    0,    0,    0,  -19,  -19,  -19,  -19,    0,    9,
+    0,    0,    0,    0,    0,    5,   -5,   -5,   -5,   -5,
+   -5,   -7,  -72,   15,   16,    0,   26,   24,    0, -229,
+ -227, -225, -222,    0,  -19,    0,  -53,  -52,    0,  -19,
+    0,    0,  -19,  -19,   24,  -51,   13,  -49,    0, -248,
+  -19,    0,  -45,   42,    0,    0,  -19,  -19,  -42,   43,
+    0,  -38,  -19,  -39, -248,    0,
 };
 final static short yyrindex[] = {                         0,
-    0,    1,    0,    0,    0,    0,    0,    0,    0,   44,
-    0,    0,   48,    0,    0,    0,    0,    0,  -33,    0,
-  -35,    0,   35,    0,    0,   20,    0,    0,    0,    0,
-    0,    0,    0,    0,  -32,  -24,  -15,  -28,   24,    0,
-    0,    0,    0,    0,    0,    0,   54,    0,   20,    0,
+    0,    0,   88,    0,    0,    0,    0,    0,   48,    0,
+    0,   49,    0,    0,    0,    0,    0,    0,  -33,    0,
+    0,    0,   32,  -31,    0,    0,    0,    1,    0,    0,
+    0,    0,    0,    0,    0,    0,  -35,  -11,  -15,  -28,
+   10,    0,    0,    0,    0,    0,    0,   52,    0,    1,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,  -35,    0,    0,    0,    0,    0,    0,
-   -8,   34,   32,   28,    0,  -35,    0,    0,    0,   55,
-    0,    0,    0,    0,    0,    0,    0,  -35,    0,  -35,
-    0,    0,  -35,    0,   55,    0,    0,    0,    0,  -35,
-  -19,    0,    0,    0,    0,    0,    0,    0,  -35,    0,
-    0,    0,    0,    0,    0,  -35,    0,    0,  -19,    0,
+    0,    0,    0,    0,    0,    0,    0,   54,    0,   22,
+   20,   18,   14,    0,  -31,    0,    0,    0,    0,    0,
+    0,    0,  -24,  -24,   54,    0,    0,    0,    0,    6,
+  -24,    0,    0,    0,    0,    0,  -24,    0,    0,    0,
+    0,    0,  -24,    0,    6,    0,
 };
 final static short yygindex[] = {                         0,
-    0,   43,   40,   47,   42,   -6,  -26,    0,   98,    0,
-    0,    0,    0,    0,    0,   10,    0,   87,    0,    0,
-   19,    0,    0,    0,    0,  -11,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,
+   -2,    0,  -69,   17,    0,   47,   50,   41,   45,   51,
+  -29,    0,  103,    0,    0,    0,    0,    0,    0,    0,
+   34,    0,    0,   87,    0,    0,
 };
-final static int YYTABLESIZE=303;
+final static int YYTABLESIZE=291;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                         47,
-    1,   50,   51,   52,   53,   54,    8,    5,   18,  103,
-  104,   18,   24,   14,    8,   24,   20,   10,   11,   20,
-   54,   17,   15,   18,   20,   22,   18,   55,   22,   34,
-   24,   56,   19,   75,   20,   19,   45,   57,   65,   66,
-   67,   69,   43,   22,   34,   58,   59,   60,   62,   61,
-   19,   63,   47,   34,   82,   70,   77,   79,   81,   86,
-   29,   89,   90,   29,   26,   93,   97,   26,   25,   99,
-  109,   25,   23,   78,   21,   23,  110,   21,   29,   91,
-  113,  114,   26,  116,   11,   83,   25,  118,   10,   65,
-   23,    8,   21,   14,   40,   43,   72,   92,   71,   94,
-   74,    7,   96,  112,   73,   54,   23,  120,    0,  102,
-    0,    0,    0,   98,    0,    0,    0,    0,  111,    0,
-    0,    0,    0,    0,    0,  117,    0,    0,    0,    0,
+yytable = new short[]{                         48,
+   51,   52,   53,   54,   55,   24,    8,    1,   24,   93,
+   94,    5,   30,    8,   88,   30,   10,   15,   14,   16,
+   36,   96,   17,   24,   20,   28,   25,   99,   28,   26,
+   30,   74,   26,  104,   36,   45,   46,   57,   58,   59,
+   60,   35,   61,   28,   35,   69,   54,   26,   48,   54,
+   32,   75,   76,   32,   31,   77,   78,   31,   29,   35,
+   27,   29,   25,   27,   54,   25,   79,   80,   32,   83,
+   84,   91,   31,   90,   42,   92,   29,   97,   27,   49,
+   25,   98,  101,  102,  103,  105,   56,    1,   13,   12,
+   16,    8,   47,   21,   49,   64,   65,   66,   68,   72,
+   51,   89,  106,   70,   73,    6,   23,   71,   82,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,   42,    0,    0,    0,    0,
+   85,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,  100,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -273,35 +266,34 @@ yytable = new short[]{                         47,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    8,    0,    0,    0,    8,    8,    8,
-   46,    8,    8,    8,    8,    8,    8,   54,   24,   24,
-   24,   54,   54,   54,   20,   54,   54,   54,   54,   54,
-   54,   49,   22,   22,   28,   29,   30,   31,   32,   33,
-   19,   24,    0,    0,    4,   25,   26,   27,    0,   28,
-   29,   30,   31,   32,   33,   26,    0,    0,   28,   29,
-   30,   31,   32,   33,   29,   29,   29,   29,   29,   26,
-   26,   26,   26,   25,   25,   25,   25,    0,   23,   23,
-   23,   21,   21,
+   47,    8,    8,    8,    8,    8,    8,   26,   30,   30,
+   30,   27,   28,   29,    0,   30,   31,   32,   33,   34,
+   35,   26,   28,   28,    0,   27,   50,   26,    0,   30,
+   31,   32,   33,   34,   35,   35,   35,   35,   35,   35,
+   54,   54,   54,   54,   54,   32,   32,   32,   32,   31,
+   31,   31,   31,    0,   29,   29,   29,   27,   27,    0,
+   25,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
 yycheck = new short[] {                         40,
-    0,   28,   29,   30,   31,   32,   40,  264,   41,  258,
-  259,   44,   41,   41,  262,   44,   41,   40,  262,   44,
-   40,  262,   44,  123,  260,   41,   59,   34,   44,   40,
-   59,  269,   41,   60,   59,   44,   40,  268,   45,   46,
-   47,   48,   59,   59,   40,  267,  266,  265,  125,   59,
-   59,   40,   40,   40,   59,   41,   63,   41,   41,   44,
-   41,   41,  123,   44,   41,  123,  125,   44,   41,  125,
-  123,   44,   41,   64,   41,   44,   40,   44,   59,   86,
-  125,   41,   59,  123,   41,   76,   59,  125,   41,  125,
-   59,  125,   59,   59,   41,   41,   57,   88,   56,   90,
-   59,    4,   93,  110,   58,  125,   20,  119,   -1,  100,
-   -1,   -1,   -1,   95,   -1,   -1,   -1,   -1,  109,   -1,
-   -1,   -1,   -1,   -1,   -1,  116,   -1,   -1,   -1,   -1,
+   30,   31,   32,   33,   34,   41,   40,  264,   44,  258,
+  259,  262,   41,   40,   84,   44,  262,   41,   44,  262,
+   40,   91,  123,   59,  260,   41,   59,   97,   44,   41,
+   59,   61,   44,  103,   40,   40,   40,  269,  268,  267,
+  266,   41,  265,   59,   44,   41,   41,   59,   40,   44,
+   41,   59,  125,   44,   41,   41,   41,   44,   41,   59,
+   41,   44,   41,   44,   59,   44,   41,   44,   59,  123,
+  123,   59,   59,  125,   24,  125,   59,  123,   59,   29,
+   59,   40,  125,   41,  123,  125,   36,    0,   41,   41,
+   59,  125,   41,  125,   41,   45,   46,   47,   48,   59,
+  125,   85,  105,   57,   60,    3,   20,   58,   75,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
-   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   75,   -1,   -1,   -1,   -1,
+   80,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   98,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
@@ -311,16 +303,15 @@ yycheck = new short[] {                         40,
    -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,   -1,
    -1,   -1,   -1,  257,   -1,   -1,   -1,  261,  262,  263,
   271,  265,  266,  267,  268,  269,  270,  257,  267,  268,
-  269,  261,  262,  263,  269,  265,  266,  267,  268,  269,
-  270,  262,  268,  269,  265,  266,  267,  268,  269,  270,
-  269,  257,   -1,   -1,  264,  261,  262,  263,   -1,  265,
-  266,  267,  268,  269,  270,  262,   -1,   -1,  265,  266,
-  267,  268,  269,  270,  265,  266,  267,  268,  269,  266,
-  267,  268,  269,  266,  267,  268,  269,   -1,  267,  268,
-  269,  268,  269,
+  269,  261,  262,  263,   -1,  265,  266,  267,  268,  269,
+  270,  257,  268,  269,   -1,  261,  262,  269,   -1,  265,
+  266,  267,  268,  269,  270,  265,  266,  267,  268,  269,
+  265,  266,  267,  268,  269,  266,  267,  268,  269,  266,
+  267,  268,  269,   -1,  267,  268,  269,  268,  269,   -1,
+  269,
 };
 }
-final static short YYFINAL=1;
+final static short YYFINAL=2;
 final static short YYMAXTOKEN=271;
 final static String yyname[] = {
 "end-of-file",null,null,null,null,null,null,null,null,null,null,null,null,null,
@@ -345,14 +336,16 @@ null,null,null,null,null,null,null,"IF","ELSE","ELSEIF","VAR","WHILE","NAME",
 final static String yyrule[] = {
 "$accept : start",
 "start : program",
+"program : func",
+"program : program func",
 "$$1 :",
-"program : $$1 func",
 "$$2 :",
-"program : program $$2 func",
 "$$3 :",
 "$$4 :",
 "$$5 :",
-"func : FUN NAME $$3 '(' optnames ')' $$4 '{' decls $$5 body '}'",
+"$$6 :",
+"$$7 :",
+"func : FUN NAME $$1 '(' $$2 optnames $$3 ')' '{' $$4 decls $$5 $$6 exprs $$7 '}'",
 "optnames : names",
 "optnames :",
 "decls : decls decl ';'",
@@ -360,7 +353,11 @@ final static String yyrule[] = {
 "decl : VAR names",
 "names : NAME",
 "names : names ',' NAME",
+"$$8 :",
+"exprs : expr $$8 ';' exprs",
+"exprs :",
 "expr : NAME ASSIGNMENT expr",
+"expr : RETURN expr",
 "expr : binopexpr",
 "binopexpr : binopexpr OP5 optmp1",
 "binopexpr : optmp1",
@@ -379,39 +376,22 @@ final static String yyrule[] = {
 "smallexpr : OP3 smallexpr",
 "smallexpr : OP2 smallexpr",
 "smallexpr : OP1 smallexpr",
+"smallexpr : WHILE '(' expr ')' '{' optexprsm '}'",
+"smallexpr : IF '(' expr ')' '{' optexprsm '}' iftail",
 "smallexpr : LITERAL",
 "smallexpr : '(' expr ')'",
-"$$6 :",
-"optexprs : expr $$6 moreexpr",
+"optexprs : expr moreexprs",
 "optexprs :",
-"$$7 :",
-"moreexpr : ',' expr $$7 moreexpr",
-"moreexpr :",
-"$$8 :",
-"$$9 :",
-"ifexpr : '(' expr $$8 ')' '{' body '}' $$9 elseifexpr",
-"$$10 :",
-"$$11 :",
-"$$12 :",
-"elseifexpr : ELSEIF $$10 '(' expr ')' $$11 '{' body '}' $$12 elseifexpr",
-"elseifexpr : elseexpr",
-"$$13 :",
-"elseexpr : ELSE $$13 '{' body '}'",
-"elseexpr :",
-"$$14 :",
-"body : expr ';' $$14 body",
-"$$15 :",
-"$$16 :",
-"body : WHILE '(' expr ')' $$15 '{' body '}' $$16 body",
-"$$17 :",
-"body : IF $$17 ifexpr body",
-"$$18 :",
-"$$19 :",
-"body : RETURN $$18 expr ';' $$19 body",
-"body :",
+"moreexprs : ',' expr moreexprs",
+"moreexprs :",
+"optexprsm : expr ';' optexprsm",
+"optexprsm :",
+"iftail : ELSEIF '(' expr ')' '{' optexprsm '}' iftail",
+"iftail : ELSE '{' optexprsm '}'",
+"iftail :",
 };
 
-//#line 216 "nanomorpho.byacc"
+//#line 286 "nanomorpho.byacc"
 
 	private NanomorphoLexer lexer;
 
@@ -427,7 +407,8 @@ final static String yyrule[] = {
 		{
 			System.err.println("IO error: " + e);
 		}
-//		System.out.println("Lexer debug: " + yyl_return + " -> " + yylval.sval);
+//		System.out.println("Debug " + yylval.sval + "(" + yyl_return + ")");
+
 		return yyl_return;
 	}
 
@@ -441,235 +422,186 @@ final static String yyrule[] = {
 		lexer = new NanomorphoLexer(r,this);
 	}
 
-	public static void thula(ArrayList<Object> millithula)
+	public static void thula()
 	{
 		int i = 0;
-		while (true)
+		int n = millithula.size();
+		while (i < n)
 		{
-			String millithulu_takn = (String)millithula.get(i);
+			variable_map.clear();
+			var_counter = 0;
+			masm.print("#\"");
+			masm.print(millithula.get(i++));
+			masm.print("[f" + ((ArrayList)millithula.get(i)).size());
+			masm.println("]\" = ");
+			masm.println("[");
+			
+			thula_args((ArrayList)millithula.get(i++));
+			
+			thula_decl((ArrayList)millithula.get(i++));
 
-			if (millithulu_takn.equals("~FUN"))
+			int m = ((ArrayList)millithula.get(i)).size();
+			for (int j = 0; j < m; j++)
+				thula_expr((ArrayList)((ArrayList)millithula.get(i)).get(j));
+
+			i++;
+
+			masm.println("(Return)");
+			masm.println("];");
+			masm.println();
+		}
+	}
+
+	public static void thula_args(ArrayList ls)
+	{
+		int n = ls.size();
+		for (int i = 0; i < n; i++)
+		{
+			if (variable_map.get((String)ls.get(i)) != null) throw_error("Variable \"" + (String)ls.get(i) + "\" is already declared.");
+			variable_map.put((String)ls.get(i), (Integer)var_counter);
+			var_counter++;
+		}
+	}
+
+	public static void thula_decl(ArrayList ls)
+	{
+		int n = ls.size();
+		masm.println("(MakeVal null)");
+		for (int i = 0; i < n; i++)
+		{
+			if (variable_map.get((String)ls.get(i)) != null) throw_error("Variable \"" + (String)ls.get(i) + "\" is already declared.");
+			variable_map.put((String)ls.get(i), (Integer)var_counter);
+			masm.println("(Push)");
+			var_counter++;
+		}
+	}
+
+	public static void thula_expr(ArrayList expr)
+	{
+		if (expr.size() == 0) return;
+		if (expr.size() == 1)
+		{
+			if (expr.get(0) instanceof ArrayList)
 			{
-				var_counter = 0;
-				variable_map.clear();
-
-				i++;
-				masm.print("#\"");
-				masm.print(millithula.get(i));
-				masm.print("[f");
-
-				i++;
-				millithulu_takn = (String)millithula.get(i);
-				String tmp_str = "";
-				while (((String)millithula.get(i)).charAt(0) != '~')
-				{
-//					System.out.println("Putlllting variable " + millithulu_takn);
-					if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
-					variable_map.put(millithulu_takn, (Integer)var_counter);
-					var_counter++;
-					millithulu_takn = (String)millithula.get(++i);
-				}
-				masm.print(((String)millithula.get(i++)).substring(1, ((String)millithula.get(i - 1)).length()));
-				masm.println("]\" = ");
-				masm.println("[");
-				masm.println("(MakeVal null)");
-				millithulu_takn = (String)millithula.get(i);
-//				while (!millithulu_takn.equals("~ENDFUN"))
-				{
-					masm.println(tmp_str);
-					millithulu_takn = (String)millithula.get(i++);
-					while (!millithulu_takn.equals("~ENDDECL"))
-					{
-//						System.out.println("Putting variable " + millithulu_takn);
-						if (variable_map.get(millithulu_takn) != null) throw_error("Variable \"" + millithulu_takn + "\" is already declared.");
-						variable_map.put(millithulu_takn, (Integer)var_counter);
-						masm.println("(Push)");
-						var_counter++;
-						millithulu_takn = (String)millithula.get(i++);
-					}
-//					System.out.println("fun decl done");
-
-//					System.out.println("DEBUG: " + i);
-//					System.out.println("Smá test: " + variable_map);
-					i = thula_body(i, "~ENDFUN");
-//					System.out.println("DEBUG: " + i);
-				}
-//				System.out.println("!!!!!!!!!!!!!!!! " + var_counter);
-				masm.println("];\n");
+				thula_expr((ArrayList)expr.get(0));
+				return;
 			}
-			else if(millithulu_takn.equals("~END"))
+			if (is_literal((String)expr.get(0)))
 			{
-//				System.out.println("Should end");
+				masm.println("(MakeVal " + expr.get(0) + ")");
 				return;
 			}
 			else
 			{
-				throw_error("Expected a function declaration.");
+				Integer loc = variable_map.get((String)expr.get(0));
+				if (loc == null) throw_error("Unknown variable \"" + expr.get(0) + "\"");
+				masm.println("(Fetch " + loc + ")");
+				return;
+			}
+		}
+
+		String head = (String)expr.get(0);
+
+
+		if (head.equals("if"))
+		{
+			int bottom_label = name_counter++;
+			int next_label   = name_counter++;
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(GoFalse _L" + next_label + ")");
+
+			int n = ((ArrayList)expr.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)expr.get(2)).get(i));
+
+			masm.println("(Go _L" + bottom_label + ")");
+			masm.println("_L" + next_label + ":");
+
+			thula_iftl((ArrayList)expr.get(3), bottom_label);
+			return;
+		}
+
+		if (head.equals("while"))
+		{
+			int top_label = name_counter++;
+			int bot_label = name_counter++;
+			masm.println("_L" + top_label + ":");
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(GoFalse _L" + bot_label + ")");
+
+			int n = ((ArrayList)expr.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)expr.get(2)).get(i));
+
+			masm.println("(Go _L" + top_label + ")");
+			masm.println("_L" + bot_label + ":");
+			return;
+		}
+
+		if (head.equals("="))
+		{
+			Integer loc = variable_map.get((String)expr.get(1));
+			if (loc == null) throw_error("Variable \"" + head + "\" not found");
+
+			thula_expr((ArrayList)expr.get(2));
+
+			masm.println("(Store " + loc + ")");
+			return;
+		}
+
+		if (head.equals("return"))
+		{
+			thula_expr((ArrayList)expr.get(1));
+			masm.println("(Return)");
+		}
+		
+		else
+		{
+			int n = ((ArrayList)expr.get(1)).size();
+			for (int i = 0; i < n; i++)
+			{
+				if (i != 0) masm.println("(Push)");
+				thula_expr((ArrayList)((ArrayList)expr.get(1)).get(n - i - 1));
 			}
 
-//			if (millithulu_takn.equals("RETURN"))
-//			{
-//				thula_expr(millithula.get(i + 1));
-//				masm.println("(Return)");
-//			}
+			masm.println("(Call #\"" + head + "[f" + n + "]\" " + n + ")");
+			return;
 		}
 	}
 
-	public static int thula_body(int i, String exit)
+	public static void thula_iftl(ArrayList ls, int bottom_label)
 	{
-		while (true)
+		if (ls.size() == 0) 
 		{
-//			System.out.println("BODY LYKKJA + " + (millithula.get(i) instanceof ArrayList));
-			Object check = millithula.get(i);
-			if (check instanceof ArrayList)
-			{
-				thula_call((ArrayList)millithula.get(i));
-				i++;
-				continue;
-			}
-			else if (check instanceof String)
-			{
-				String millithulu_takn = (String)millithula.get(i++);
-				if (millithulu_takn.equals("~ASSIGN"))
-				{
-//					System.out.println(variable_map);
-					String name = (String)millithula.get(i++);
-					thula_expr(millithula.get(i));
-					i++;
-//					System.out.println("Assigin " + name);
-					Integer var_loc = variable_map.get(name);
-					if (var_loc == null) throw_error("Can't assign unknown variable \"" + name + "\"");
-//					System.out.println("Done " + var_loc);
-					masm.println("(Store " + var_loc + ")");
-					continue;
-				}
-				if (millithulu_takn.equals("~IF"))
-				{
-					int bottom_label = name_counter++;
-					thula_expr(millithula.get(i));
-					i++;
-					masm.println("(GoFalse _L" + (name_counter) + ")");
-					i = thula_body(i, "~ENDIF");
-					masm.println("(Go _L" + bottom_label + ")");
-					masm.println("_L" + (name_counter++) + ":");
-					if (millithula.get(i) instanceof String)
-					while (millithula.get(i).equals("~ELSEIF"))
-					{
-						int label = name_counter;
-
-						i++;
-						thula_expr(millithula.get(i));
-						i++;
-						masm.println("(GoFalse _L" + label + ")");
-						i = thula_body(i, "~ENDELSEIF");
-						masm.println("(Go _L" + bottom_label + ")");
-						masm.println("_L" + label + ":");
-						name_counter++;
-					}
-					if (millithula.get(i) instanceof String)
-					if (millithula.get(i).equals("~ELSE"))
-					{
-						i++;
-						i = thula_body(i, "~ENDELSE");
-					}
-					masm.println("_L" + bottom_label + ":");
-
-					continue;
-				}
-				if (millithulu_takn.equals("~WHILE"))
-				{
-					int label1 = name_counter;
-					int label2 = name_counter + 1;
-					name_counter += 2;
-
-					masm.println("_L" + label1 + ":");
-					thula_expr(millithula.get(i));
-					masm.println("(GoFalse _L" + (label2) + ")");
-					i = thula_body(i, "~ENDWHILE");
-					masm.println("(MakeVal 1)");
-					masm.println("(Go _L" + label1 + ")");
-					masm.println("_L" + label2 + ":");
-
-					continue;
-				}
-				if (millithulu_takn.equals("~RETURN"))
-				{
-					thula_expr(millithula.get(i));
-					i++;
-					masm.println("(Return)");
-					continue;
-				}
-				if (millithulu_takn.equals(exit))
-				{
-					return i;
-				}
-				else
-				{
-					continue;
-				}
-			}
-			else
-			{
-				throw_error("Weird error :(");
-			}
-			return i;
+			masm.println("_L" + bottom_label + ":");
+			return;
 		}
-	}
-
-	public static void thula_expr(Object expr)
-	{
-		if (!(expr instanceof String))
+		if (((String)ls.get(0)).equals("elseif"))
 		{
-//				System.out.println("INN " + expr);
-			thula_call((ArrayList<Object>)expr);
-//				System.out.println("'UT");
+			int next_label = name_counter++;
+			thula_expr((ArrayList)ls.get(1));
+			masm.println("(GoFalse _L" + next_label + ")");
+
+			int n = ((ArrayList)ls.get(2)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)ls.get(2)).get(i));
+
+			masm.println("(Go _L" + bottom_label + ")");
+			masm.println("_L" + next_label + ":");
+
+			thula_iftl((ArrayList)ls.get(3), bottom_label);
 		}
 		else
 		{
-			if (is_literal((String)expr))
-			{
-				masm.println("(MakeVal " + expr + ")");
-			}
-			else
-			{
-				Integer var_loc = variable_map.get(expr);
-				if (var_loc == null) throw_error("Undefined variable: " + expr);
+			int n = ((ArrayList)ls.get(1)).size();
+			for (int i = 0; i < n; i++)
+				thula_expr((ArrayList)((ArrayList)ls.get(1)).get(i));
 
-				masm.println("(Fetch " + var_loc + ")");
-			}
+			masm.println("_L" + bottom_label + ":");
+			return;
 		}
 	}
 
-	//TODO Fix
-	public static void thula_call(ArrayList call)
-	{
-		int i = 1;
-		String name = (String)call.get(1);
-
-		if (call.size() != 3)
-		{
-			while (true)
-			{
-				i++;
-//				System.out.println("TEST: " + i + ", " + call.size());
-				if ((call.get(i + 1) instanceof String) && ((String)call.get(i + 1)).equals("~ENDCALL"))
-				{
-					thula_expr(call.get(i));
-					break;
-				}
-				else
-				{
-					thula_expr(call.get(i));
-					masm.println("(Push)");
-				}
-			}
-			masm.println("(Call #\"" + name + "[f" + (i - 1) + "]\" " + (i - 1) + ")");
-		}
-		else
-		{
-			masm.println("(Call #\"" + name + "[f0]\" 0)");
-		}
-	}
 
 	public static boolean is_literal(String str)
 	{
@@ -699,27 +631,17 @@ final static String yyrule[] = {
 			return false;
 		}
 	}
-
-	public static void clean_millithula()
-	{
-		ArrayList<Object> tmp = new ArrayList<Object>();
-		int n = millithula.size();
-		for (int i = 0; i < n; i++)
-			if (millithula.get(i) != null) tmp.add(millithula.get(i));
-
-		millithula = tmp;
-	}
+		
+		
 
 
 
 
-	public static HashMap<String, Integer> function_map;
 	public static HashMap<String, Integer> variable_map;
 	public static ArrayList<Object> millithula;
-	public static ArrayList<Object> expr_tmp;
+	public static ArrayList<Object> tmp_arraylist;
 	public static PrintStream masm;
 
-	public static int args_counter;
 	public static int name_counter;
 	public static int var_counter;
 
@@ -733,43 +655,24 @@ final static String yyrule[] = {
 			System.exit(1);
 		}
 
-		function_map = new HashMap<String, Integer>();
-		variable_map = new HashMap<String, Integer>();
-		millithula   = new ArrayList<Object>();
-		expr_tmp 	 = new ArrayList<Object>();
-		masm         = new PrintStream(new File(args[0] + ".masm"));
-		name_counter = 0;
-		var_counter  = 1;
+		variable_map  = new HashMap<String, Integer>();
+		millithula    = new ArrayList<Object>();
+		tmp_arraylist = new ArrayList<Object>();
+		masm          = new PrintStream(new File(args[0] + ".masm"));
+		name_counter  = 0;
+		var_counter   = 0;
 
-//		yyparser.yydebug = true;
 		System.out.println("Parsing!");
 		yyparser.yyparse();
-		millithula.add("~END");
 		System.out.println("Parser finsished!");
-
-
-
-		clean_millithula();
-//		print_millithula();
 
 		System.out.println();
 
 		masm.println("\"" + args[0] + ".mexe\" = main in\n!\n{{");
-		thula(millithula);
+		thula();
 		masm.println("}}\n*\nBASIS\n;");
 
 		System.out.println("Comilation complete!");
-	}
-
-	public static void print_millithula()
-	{
-		int n = millithula.size();
-
-		System.out.println("Printing the milliþula:");
-		for (int i = 0; i < n; i++)
-		{
-			System.out.println(millithula.get(i));
-		}
 	}
 
 	public static void throw_error(String error)
@@ -777,7 +680,7 @@ final static String yyrule[] = {
 		System.out.println(error);
 		System.exit(4);
 	}
-//#line 709 "Borpho.java"
+//#line 612 "Borpho.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -931,251 +834,301 @@ boolean doaction;
     switch(yyn)
       {
 //########## USER-SUPPLIED ACTIONS ##########
-case 2:
-//#line 15 "nanomorpho.byacc"
-{millithula.add("~FUN");}
-break;
 case 4:
-//#line 16 "nanomorpho.byacc"
-{millithula.add("~FUN");}
+//#line 20 "nanomorpho.byacc"
+{millithula.add(val_peek(0).sval);}
+break;
+case 5:
+//#line 21 "nanomorpho.byacc"
+{tmp_arraylist.clear();}
 break;
 case 6:
-//#line 20 "nanomorpho.byacc"
-{millithula.add(val_peek(0).sval); args_counter = 0;}
+//#line 21 "nanomorpho.byacc"
+{millithula.add(new ArrayList<Object>(tmp_arraylist));}
 break;
 case 7:
-//#line 20 "nanomorpho.byacc"
-{function_map.put(val_peek(4).sval, args_counter); millithula.add("~" + args_counter);}
+//#line 22 "nanomorpho.byacc"
+{tmp_arraylist.clear();}
 break;
 case 8:
-//#line 20 "nanomorpho.byacc"
-{millithula.add("~ENDDECL");}
+//#line 22 "nanomorpho.byacc"
+{millithula.add(new ArrayList<Object>(tmp_arraylist));}
 break;
 case 9:
-//#line 20 "nanomorpho.byacc"
-{millithula.add("~ENDFUN");}
+//#line 23 "nanomorpho.byacc"
+{tmp_arraylist.clear();}
 break;
-case 15:
-//#line 38 "nanomorpho.byacc"
-{millithula.add(val_peek(0).sval); args_counter++;}
-break;
-case 16:
-//#line 39 "nanomorpho.byacc"
-{millithula.add(val_peek(0).sval); args_counter++;}
+case 10:
+//#line 23 "nanomorpho.byacc"
+{millithula.add(new ArrayList<Object>(tmp_arraylist));}
 break;
 case 17:
-//#line 43 "nanomorpho.byacc"
-{millithula.add("~ASSIGN"); millithula.add(val_peek(2).sval); millithula.add(val_peek(0).obj);}
+//#line 41 "nanomorpho.byacc"
+{tmp_arraylist.add(val_peek(0).sval);}
 break;
 case 18:
-//#line 44 "nanomorpho.byacc"
-{yyval.obj = val_peek(0).obj;}
+//#line 42 "nanomorpho.byacc"
+{tmp_arraylist.add(val_peek(0).sval);}
 break;
 case 19:
-//#line 49 "nanomorpho.byacc"
-{
-		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(2).obj);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
-		yyval.obj = ret;
-	}
+//#line 46 "nanomorpho.byacc"
+{tmp_arraylist.add(val_peek(0).obj);}
 break;
-case 21:
-//#line 63 "nanomorpho.byacc"
+case 22:
+//#line 52 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(2).obj);
+		ret.add("=");
+		ret.add(val_peek(2).sval);
 		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
 		yyval.obj = ret;
 	}
 break;
 case 23:
-//#line 77 "nanomorpho.byacc"
+//#line 60 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(2).obj);
+		ret.add("return");
 		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
 		yyval.obj = ret;
 	}
 break;
 case 25:
-//#line 91 "nanomorpho.byacc"
+//#line 71 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add(val_peek(1).sval);
-		ret.add(val_peek(2).obj);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add(val_peek(0).obj);
+		((ArrayList)ret.get(1)).add(val_peek(2).obj);
 		yyval.obj = ret;
 	}
 break;
 case 27:
-//#line 105 "nanomorpho.byacc"
+//#line 84 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add(val_peek(1).sval);
-		ret.add(val_peek(2).obj);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add(val_peek(0).obj);
+		((ArrayList)ret.get(1)).add(val_peek(2).obj);
 		yyval.obj = ret;
 	}
 break;
 case 29:
-//#line 118 "nanomorpho.byacc"
-{yyval.obj = val_peek(0).sval;}
-break;
-case 30:
-//#line 120 "nanomorpho.byacc"
+//#line 97 "nanomorpho.byacc"
 {
-		expr_tmp.add("~ENDCALL");
-/*		ArrayList<Object> ret = new ArrayList<Object>(expr_tmp);*/
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(3).sval);
-		int n = expr_tmp.size();
-		for (int i = 0; i < n; i++)
-		{
-			ret.add(expr_tmp.get(i));
-		}
-		expr_tmp.clear();
+		ret.add(val_peek(1).sval);
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add(val_peek(0).obj);
+		((ArrayList)ret.get(1)).add(val_peek(2).obj);
 		yyval.obj = ret;
 	}
 break;
 case 31:
-//#line 135 "nanomorpho.byacc"
+//#line 110 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add(val_peek(1).sval);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
-		yyval.obj = ret;
-	}
-break;
-case 32:
-//#line 144 "nanomorpho.byacc"
-{
-		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add(val_peek(0).obj);
+		((ArrayList)ret.get(1)).add(val_peek(2).obj);
 		yyval.obj = ret;
 	}
 break;
 case 33:
-//#line 153 "nanomorpho.byacc"
+//#line 123 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
 		ret.add(val_peek(1).sval);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
-		yyval.obj = ret;
-	}
-break;
-case 34:
-//#line 162 "nanomorpho.byacc"
-{
-		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
+		ret.add(new ArrayList<Object>());
+		((ArrayList)ret.get(1)).add(val_peek(0).obj);
+		((ArrayList)ret.get(1)).add(val_peek(2).obj);
 		yyval.obj = ret;
 	}
 break;
 case 35:
-//#line 171 "nanomorpho.byacc"
+//#line 136 "nanomorpho.byacc"
 {
 		ArrayList<Object> ret = new ArrayList<Object>();
-		ret.add("~CALL");
-		ret.add(val_peek(1).sval);
-		ret.add(val_peek(0).obj);
-		ret.add("~ENDCALL");
+		ret.add(val_peek(0).sval);
 		yyval.obj = ret;
 	}
 break;
 case 36:
-//#line 179 "nanomorpho.byacc"
-{yyval.obj = val_peek(0).sval;}
+//#line 142 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add(val_peek(3).sval);
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
 break;
 case 37:
-//#line 180 "nanomorpho.byacc"
-{yyval.obj = val_peek(1).obj;}
+//#line 149 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
+		ret.add(val_peek(1).sval);
+		tmp2.add(val_peek(0).obj);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
+		yyval.obj = ret;
+	}
 break;
 case 38:
-//#line 184 "nanomorpho.byacc"
-{expr_tmp.add(val_peek(0).obj);}
+//#line 160 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
+		ret.add(val_peek(1).sval);
+		tmp2.add(val_peek(0).obj);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
+		yyval.obj = ret;
+	}
+break;
+case 39:
+//#line 171 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
+		ret.add(val_peek(1).sval);
+		tmp2.add(val_peek(0).obj);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
+		yyval.obj = ret;
+	}
+break;
+case 40:
+//#line 182 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
+		ret.add(val_peek(1).sval);
+		tmp2.add(val_peek(0).obj);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
+		yyval.obj = ret;
+	}
 break;
 case 41:
-//#line 189 "nanomorpho.byacc"
-{expr_tmp.add(val_peek(0).obj);}
+//#line 193 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ArrayList<Object> tmp1 = new ArrayList<Object>();
+		ArrayList<Object> tmp2 = new ArrayList<Object>();
+		ret.add(val_peek(1).sval);
+		tmp2.add(val_peek(0).obj);
+		tmp1.add(tmp2);
+		ret.add(tmp1);
+		yyval.obj = ret;
+	}
+break;
+case 42:
+//#line 204 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("while");
+		ret.add(val_peek(4).obj);
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
+break;
+case 43:
+//#line 212 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("if");
+		ret.add(val_peek(5).obj);
+		ret.add(val_peek(2).obj);
+		ret.add(val_peek(0).obj);
+		yyval.obj = ret;
+	}
 break;
 case 44:
-//#line 194 "nanomorpho.byacc"
-{millithula.add(val_peek(0).obj);}
+//#line 221 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add(val_peek(0).sval);
+		yyval.obj = ret;
+	}
 break;
 case 45:
-//#line 194 "nanomorpho.byacc"
-{millithula.add("~ENDIF");}
+//#line 227 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
+break;
+case 46:
+//#line 236 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>((ArrayList)val_peek(0).obj);
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
 break;
 case 47:
-//#line 198 "nanomorpho.byacc"
-{millithula.add("~ELSEIF");}
+//#line 241 "nanomorpho.byacc"
+{yyval.obj = new ArrayList<Object>();}
 break;
 case 48:
-//#line 198 "nanomorpho.byacc"
-{millithula.add(val_peek(1).obj);}
+//#line 246 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>((ArrayList)val_peek(0).obj);
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
 break;
 case 49:
-//#line 198 "nanomorpho.byacc"
-{millithula.add("~ENDELSEIF");}
+//#line 251 "nanomorpho.byacc"
+{yyval.obj = new ArrayList<Object>();}
+break;
+case 50:
+//#line 256 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add(val_peek(2).obj);
+		ret.addAll((ArrayList)val_peek(0).obj);
+		yyval.obj = ret;
+	}
+break;
+case 51:
+//#line 262 "nanomorpho.byacc"
+{yyval.obj = new ArrayList<Object>();}
 break;
 case 52:
-//#line 203 "nanomorpho.byacc"
-{millithula.add("~ELSE");}
+//#line 267 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("elseif");
+		ret.add(val_peek(5).obj);
+		ret.add(val_peek(2).obj);
+		ret.add(val_peek(0).obj);
+		yyval.obj = ret;
+	}
 break;
 case 53:
-//#line 203 "nanomorpho.byacc"
-{millithula.add("~ENDELSE");}
+//#line 276 "nanomorpho.byacc"
+{
+		ArrayList<Object> ret = new ArrayList<Object>();
+		ret.add("else");
+		ret.add(val_peek(1).obj);
+		yyval.obj = ret;
+	}
 break;
-case 55:
-//#line 208 "nanomorpho.byacc"
-{millithula.add(val_peek(1).obj);}
+case 54:
+//#line 282 "nanomorpho.byacc"
+{yyval.obj = new ArrayList<Object>();}
 break;
-case 57:
-//#line 209 "nanomorpho.byacc"
-{millithula.add("~WHILE"); millithula.add(val_peek(1).obj);}
-break;
-case 58:
-//#line 209 "nanomorpho.byacc"
-{millithula.add("~ENDWHILE");}
-break;
-case 60:
-//#line 210 "nanomorpho.byacc"
-{millithula.add("~IF");}
-break;
-case 62:
-//#line 211 "nanomorpho.byacc"
-{millithula.add("~RETURN");}
-break;
-case 63:
-//#line 211 "nanomorpho.byacc"
-{millithula.add(val_peek(1).obj);}
-break;
-//#line 1102 "Borpho.java"
+//#line 1055 "Borpho.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

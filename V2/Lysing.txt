@@ -1,3 +1,5 @@
+﻿
+
 EBNF skilgreining á málinu nema að OP hefur verið einfaldað
 þannig að allar tvíundaraðgerðir hafi sama forgang en minni
 forgang en einundaraðgerðir.
@@ -6,7 +8,7 @@ program = { function }
 	;
 
 func
-	: 'fun' NAME '(' [ NAME, { ',', NAME } ], ')', '{', {decl}, {body}, '}'
+	: 'fun' NAME '(' [ NAME, { ',', NAME } ], ')', '{', {decl, ';'}, {expr, ';'}, '}'
 	;
 
 decl
@@ -15,11 +17,12 @@ decl
 
 expr
 	: NAME '=' expr
+	| 'return', expr
 	| binopexpr
 	;
 
 binopexpr
-	: binopexpr OP optmp1
+	: binopexpr OP smallexpr
 
 
 smallexpr
@@ -28,22 +31,12 @@ smallexpr
 	| OP, smallexpr
 	| LITERAL
 	| '(', expr, ')'
-	;
-
-ifexpr
-	: '(', expr, ')', '{', body, '}', iftail
+	| 'while', '(', expr, ')', '{', {expr, ';'}, '}'
+	| 'if', '(', expr, ')', '{', {expr, ';'}, '}', iftail
 	;
 
 iftail
-	: 'elseif', '(', expr, ')', '{', body, '}', elseifexpr
+	: 'elseif', '(', expr, ')', '{', body, '}', iftail
 	| 'else', '{', body, '}'
-	;
-
-body
-	: expr, ';', body
-	| 'while', '(', expr, ')', '{', body, '}', body
-	| 'if', ifexpr, body
-	| 'go', '{', body, '}', body
-	| 'return', expr, ';', body
 	|
 	;

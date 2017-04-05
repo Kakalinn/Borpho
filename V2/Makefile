@@ -11,3 +11,4 @@ parser:
 
 comp:
 	javac *.java
+
